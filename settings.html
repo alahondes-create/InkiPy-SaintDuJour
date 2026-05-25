@@ -1,0 +1,66 @@
+<!-- Fichier: plugins/saint_du_jour/settings.html -->
+<div class="plugin-settings">
+    <!-- Utiliser l'IA -->
+    <div class="form-group">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="use_ia" name="use_ia" checked>
+            <label class="form-check-label" for="use_ia">Utiliser la synthèse IA (style Paul Claudel)</label>
+        </div>
+    </div>
+
+    <!-- Clé API Mistral -->
+    <div class="form-group">
+        <label for="mistral_api_key">Clé API Mistral (optionnelle)</label>
+        <input type="password" class="form-control" id="mistral_api_key" name="mistral_api_key" placeholder="votre_clé_mistral">
+        <small class="form-text text-muted">Laissez vide pour utiliser OpenAI ou désactiver l'IA.</small>
+    </div>
+
+    <!-- Clé API OpenAI -->
+    <div class="form-group">
+        <label for="openai_api_key">Clé API OpenAI (optionnelle)</label>
+        <input type="password" class="form-control" id="openai_api_key" name="openai_api_key" placeholder="votre_clé_openai">
+    </div>
+
+    <!-- Choix entre Mistral/OpenAI -->
+    <div class="form-group">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="use_openai" name="use_openai">
+            <label class="form-check-label" for="use_openai">Utiliser OpenAI au lieu de Mistral</label>
+        </div>
+    </div>
+
+    <!-- Longueur max du texte -->
+    <div class="form-group">
+        <label for="max_length">Longueur max du texte (caractères)</label>
+        <input type="number" class="form-control" id="max_length" name="max_length" value="300" min="100" max="1000">
+    </div>
+
+    <!-- Taille de la police -->
+    <div class="form-group">
+        <label for="font_size_ratio">Taille de la police (0.01 à 0.2)</label>
+        <input type="number" class="form-control" id="font_size_ratio" name="font_size_ratio" value="0.05" min="0.01" max="0.2" step="0.01">
+    </div>
+
+    <!-- Afficher la date -->
+    <div class="form-group">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="show_date" name="show_date" checked>
+            <label class="form-check-label" for="show_date">Afficher la date</label>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    if (loadPluginSettings) {
+        // Charger les paramètres existants
+        document.getElementById('use_ia').checked = pluginSettings.use_ia !== false;
+        document.getElementById('mistral_api_key').value = pluginSettings.mistral_api_key || '';
+        document.getElementById('openai_api_key').value = pluginSettings.openai_api_key || '';
+        document.getElementById('use_openai').checked = pluginSettings.use_openai === true;
+        document.getElementById('max_length').value = pluginSettings.max_length || 300;
+        document.getElementById('font_size_ratio').value = pluginSettings.font_size_ratio || 0.05;
+        document.getElementById('show_date').checked = pluginSettings.show_date !== false;
+    }
+});
+</script>
