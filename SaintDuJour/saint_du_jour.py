@@ -9,7 +9,7 @@ import os
 
 logger = logging.getLogger(__name__)
 
-class InkiPy-SaintDuJour(BasePlugin):
+class SaintDuJour(BasePlugin):
     """
     Plugin InkyPi pour afficher le saint du jour depuis Nominis,
     avec une synthèse IA dans le style de Paul Claudel.
